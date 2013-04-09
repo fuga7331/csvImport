@@ -31,6 +31,7 @@ function initTests(log){
 
 	}
 	return {
+		exampleCsv: ',a,b,c\ncontentbg (1).gif,aa,"bb,",cc\ncontentbg (6).gif,11,""",""",33\nnp,eserj,"""",\n',
 		test_regexUnion: test_regexUnion,
 		test_which1True: test_which1True,
 		test_translateFirst: test_translateFirst,

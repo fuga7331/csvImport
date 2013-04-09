@@ -1,8 +1,14 @@
-function parseCsv(csvStr){
-	var plain = /[^,"\n]+/,
-		quoted = /"(?:[^"]|"")*"/,
-		dataDelimiter = /,/,
-		rowDelimiter = /\n/,
+//options: {
+//    data: <data delimiter RegExp>
+//    row: <row delimiter RegExp>
+//    quoted: <quoted string RegExp>
+//    plain: <plain string (unquoted, no delimiters) RegExp>	
+// }
+function parseCsv(csvStr, options){
+	var plain = options && options.plain || /[^,"\n]+/,
+		quoted = options && options.quoted || /"(?:[^"]|"")*"/,
+		dataDelimiter = options && options.data || /,/,
+		rowDelimiter = options && options.row || /\n/,
 		tokens = tokenizeByArray(csvStr, [plain, quoted, dataDelimiter, rowDelimiter], ["plain","quoted","dataDelim","rowDelim"]),
 		rows = [],
 		curRow = [],

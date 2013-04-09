@@ -5,16 +5,41 @@
 		<script src="helper_functions.js"></script>
 		<script src="parse_csv.js"></script>
 		<script src="tests.js"></script>
+		<style>
+			td{
+				padding: 10px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="output">
 		</div>
+		<table id="exampleCsv">
+			<thead></thead>
+			<tbody></tbody>
+		</table>
 		<script>
 			tests = initTests(function (str) {$('#output').append($("<p>").text(str));});
 			tests.test_regexUnion();
 			tests.test_which1True();
 			tests.test_translateFirst();
 			tests.test_parseCsv();
+			
+			
+			$(parseCsv(tests.exampleCsv)).
+				map(function (i, row){
+					var t = i===0 ? "<th>" : "<td>";
+					return $("<tr>").
+								append(
+									$(row).map( function (j, data) {
+										return $(t).
+											html(data.toString())[0]; 
+									})
+								)[0];
+				}).
+				appendTo("#exampleCsv tbody").
+				first().
+				appendTo("#exampleCsv thead");
 		</script>
 	</body>
 </html>
