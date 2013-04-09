@@ -9,7 +9,9 @@ function parseCsv(csvStr, options){
 		quoted = options && options.quoted || /"(?:[^"]|"")*"/,
 		dataDelimiter = options && options.data || /,/,
 		rowDelimiter = options && options.row || /\n/,
-		tokens = tokenizeByArray(csvStr, [plain, quoted, dataDelimiter, rowDelimiter], ["plain","quoted","dataDelim","rowDelim"]),
+		tokens = tokenizeByArray(csvStr,
+                                         [plain, quoted, dataDelimiter, rowDelimiter],
+				         ["plain","quoted","dataDelim","rowDelim"]),
 		rows = [],
 		curRow = [],
 		curData = "";
@@ -21,7 +23,10 @@ function parseCsv(csvStr, options){
 				curData = curData.concat(token);
 				return true;
 			case "quoted":
-				curData = curData.concat(token.substring(1,token.length - 1).replace(new RegExp('""','g'),'"'));
+				curData = curData.
+                                                  concat(token.substring(1,token.length - 1).
+                                                  replace(new RegExp('""','g'),
+                                                          '"'));
 				return true;
 			case "dataDelim":
 				curRow = curRow.concat(curData);
