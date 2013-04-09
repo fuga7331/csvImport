@@ -18,7 +18,7 @@ function initTests(log){
 
 	function test_parseCsv(){
 		var a=',a,b,c\ncontentbg (1).gif,aa,"bb,",cc\ncontentbg (6).gif,11,""",""",33\nnp,eserj,"""",\n';
-		log(JSON.stringify(parseCsv(a)).replace(/\s/g, ""));
+		//log(JSON.stringify(parseCsv(a)).replace(/\s/g, ""));
 		log(JSON.stringify(parseCsv(a)).replace(/\s/g, "") ===
 			(	'['+
 				'["",                 "a",      "b",   "c"],'+
