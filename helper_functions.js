@@ -38,10 +38,13 @@ function matchExact(str,r,regexType) {
 
 function regexUnion(regexArr, regexOptions){
 	return new RegExp($(regexArr).
-						map(function () {return "(" + this.toString().substring(1).replace(/\/\w*$/,"") + ")";}).
-						toArray().
-						join("|"),
-					  regexOptions);
+			      map(function () {
+			      	return "(" + this.toString().substring(1).replace(/\/\w*$/,"") + ")";
+			      	}).
+			      toArray().
+			      join("|"),
+			  regexOptions
+			  );
 }
 
 function tokenizeByArray(str, regexArr, tokenTypes){
