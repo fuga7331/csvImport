@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="jquery-1.9.1.js"></script>
+		<script src="helper_functions.js"></script>
+		<script src="parse_csv.js"></script>
+		<script src="tests.js"></script>
+	</head>
+	<body>
+		<div id="output">
+		</div>
+		<script>
+			tests = initTests(function (str) {$('#output').append($("<p>").text(str));});
+			tests.test_regexUnion();
+			tests.test_which1True();
+			tests.test_translateFirst();
+			tests.test_parseCsv();
+		</script>
+	</body>
+</html>
